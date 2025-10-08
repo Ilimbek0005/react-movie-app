@@ -1,26 +1,25 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-function Detail(){
-    
-    const {id} = useParams(); // получим id из URL
-    const [movie, setMovie] = useState(null);
+function Detail() {
+  const { id } = useParams();
+  const movie = useSelector(state =>
+    state.movies.movies.find(m => m.id === parseInt(id))
+  );
 
-    useEffect(()=>{
-        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-        .then((res) => res.json())
-        .then((data)=> setMovie(data));
-    }, [id]);
+  if (!movie) return <p>Фильм не найден...</p>;
 
-    if(!movie) return <p>Загрузка......</p>
-
-    return(
-        <div style={{padding: '20px'}}>
-            <h2>{movie.title}</h2>
-            <p>{movie.body}</p>
-            <p><b>ID фильма:</b>{movie.id}</p>
-        </div>
-    );
+  return (
+    <div style={{ padding: '20px' }}>
+      <Link to="/movies">← Назад к списку фильмов</Link>
+      <h2>{movie.title} ({movie.year})</h2>
+      <img src={movie.poster} alt={movie.title} width="200" />
+      <p>{movie.description}</p>
+      <p><b>Жанры:</b> {movie.genre.join(', ')}</p>
+      <p><b>Продолжительность:</b> {movie.duration}</p>
+      <p><b>Рейтинг:</b> {movie.rating}</p>
+    </div>
+  );
 }
 
 export default Detail;

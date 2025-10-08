@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import PostsList from "./components/PostsList";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MoviePage from './pages/MoviesPage';
+import MoviesPage from './pages/MoviesPage';
 import Detail from './pages/Detail'
 
 function App(){
@@ -20,7 +20,7 @@ function App(){
         </div>
       } />
 
-      <Route path="/movies" element={<MoviePage/>}/>
+      <Route path="/movies" element={<MoviesPage/>}/>
     </Routes>
     <Footer/>
   </Router>
