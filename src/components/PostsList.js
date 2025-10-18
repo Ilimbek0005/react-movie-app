@@ -1,43 +1,25 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import './PostsList.css';
-function PostsList(){
-    const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+import MovieCard from "./MovieCard";
+import moviesData from "../data/movies.json"; // <- твой JSON с фильмами
 
+function PostsList() {
+  const [movies, setMovies] = useState([]);
 
-useEffect(()=>{
-    fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
-    .then(response => {
-        if(!response.ok)throw new Error('Ошибка сети')
-        return response.json();
-    })
-    .then(data=>{
-        setPosts(data)
-        setLoading(false)
-    })
-    .catch(err=>{
-        setError(err.message);
-        setLoading(false)
-    })
-}, []);
+  useEffect(() => {
+    setMovies(moviesData); // просто загружаем локальные фильмы
+  }, []);
 
-
-if(loading) return <div>Загрузка....</div>;
-if(error) return <div>Ошибка{error}</div>;
-
-return(
+  return (
     <div className="posts-list">
-        <h2>Популярные фильмы</h2>
-        <div className="posts-grid">
-            {posts.map(post=>(
-                <div key={post.id} className="post-card">
-                    <h3>{post.title}</h3>
-                    <p>{post.body.slice(0, 100)}.....</p>
-                </div>
-            ))}
-        </div>
+      <h2>Популярные фильмы</h2>
+      <div className="posts-grid">
+        {movies.map(movie => (
+          <MovieCard key={movie.id} movie={movie} /> // <- используем MovieCard с кнопкой
+        ))}
+      </div>
     </div>
-)
+  );
 }
+
 export default PostsList;

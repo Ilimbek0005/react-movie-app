@@ -5,25 +5,21 @@ import HomePage from "./pages/HomePage";
 import PostsList from "./components/PostsList";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MoviesPage from './pages/MoviesPage';
-import Detail from './pages/Detail'
+import Detail from './pages/Detail';
+import FavoritesPage from './pages/FavoritesPage';
 
-function App(){
-  return(
-  <Router>
-    <Header />
-    <Routes>
-      <Route path="/movies/:id" element={<Detail/>}/>
-      <Route path="/" element={
-        <div>
-          <HomePage/>
-          <PostsList/>
-        </div>
-      } />
-
-      <Route path="/movies" element={<MoviesPage/>}/>
-    </Routes>
-    <Footer/>
-  </Router>
+function App() {
+  return (
+    <Router>
+      <Header /> {/* только верхняя панель */}
+      <Routes>
+        <Route path="/" element={<><HomePage/><PostsList/></>} />
+        <Route path="/movies" element={<MoviesPage/>} />
+        <Route path="/movies/:id" element={<Detail/>} />
+        <Route path="/favorites" element={<FavoritesPage/>} />
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 
