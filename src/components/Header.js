@@ -13,6 +13,9 @@ function Header() {
         <Link to="/contacts" style={{ margin: "10px", color: "white" }}>Контакты</Link>
         <Link to="/movies" style={{ margin: "10px", color: "white" }}>Фильмы</Link>
         <Link to="/favorites" style={{ margin: "10px", color: "white" }}>Избранные</Link>
+        <Link to="/booking" style={{ margin: "10px", color: "white" }}>Бронировать</Link>
+{user && <Link to="/my-bookings" style={{ margin: "10px", color: "white" }}>Мои брони</Link>}
+
 
         {/* Блок справа — вход / выход */}
         <span style={{ float: "right", marginRight: "15px" }}>
