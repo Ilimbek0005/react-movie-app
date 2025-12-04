@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext"; // добавлено
+import { AuthContext } from "../context/AuthContext";
 
 function Header() {
-  const { user, logout } = useContext(AuthContext); // получаем пользователя и выход
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <header style={{ padding: "15px", background: "#333", color: "#fff" }}>
@@ -13,9 +13,14 @@ function Header() {
         <Link to="/contacts" style={{ margin: "10px", color: "white" }}>Контакты</Link>
         <Link to="/movies" style={{ margin: "10px", color: "white" }}>Фильмы</Link>
         <Link to="/favorites" style={{ margin: "10px", color: "white" }}>Избранные</Link>
-        <Link to="/booking" style={{ margin: "10px", color: "white" }}>Бронировать</Link>
-{user && <Link to="/my-bookings" style={{ margin: "10px", color: "white" }}>Мои брони</Link>}
 
+        {/* Добавляем ссылки для зарегистрированного пользователя */}
+        {user && (
+          <>
+            <Link to="/booking" style={{ margin: "10px", color: "white" }}>Забронировать</Link>
+            <Link to="/mybookings" style={{ margin: "10px", color: "white" }}>Мои брони</Link>
+          </>
+        )}
 
         {/* Блок справа — вход / выход */}
         <span style={{ float: "right", marginRight: "15px" }}>

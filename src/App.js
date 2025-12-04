@@ -11,36 +11,42 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
-
-
 function App() {
   return (
     <AuthProvider>
+      {" "}
       <Router>
-        <Header />
+        {" "}
+        <Header />{" "}
         <Routes>
-          <Route path="/" element={<><HomePage /><PostsList /></>} />
-          <Route path="/movies" element={<MoviesPage />} />
-          <Route path="/movies/:id" element={<Detail />} />
-
-          {/* Защищённая страница избранных фильмов */}
+          {" "}
+          <Route
+            path="/"
+            element={
+              <>
+                <HomePage />
+                <PostsList />
+              </>
+            }
+          />{" "}
+          <Route path="/movies" element={<MoviesPage />} />{" "}
+          <Route path="/movies/:id" element={<Detail />} />{" "}
+          {/* Защищённая страница избранных фильмов */}{" "}
           <Route
             path="/favorites"
             element={
               <ProtectedRoute>
-                <FavoritesPage />
+                {" "}
+                <FavoritesPage />{" "}
               </ProtectedRoute>
             }
-          />
-
-          {/* Авторизация */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-        <Footer />
-      </Router>
+          />{" "}
+          {/* Авторизация */} <Route path="/login" element={<Login />} />{" "}
+          <Route path="/register" element={<Register />} />{" "}
+        </Routes>{" "}
+        <Footer />{" "}
+      </Router>{" "}
     </AuthProvider>
   );
 }
-
 export default App;

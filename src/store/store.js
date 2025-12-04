@@ -1,14 +1,30 @@
+// import { configureStore, combineReducers } from "@reduxjs/toolkit";
+// import moviesReducer from "./moviesSlice";
+// import favoritesReducer from "./favoritesSlice";
+// import ticketsReducer from "./ticketsSlice";
+// import bookingReducer from "./bookingSlice"; // <- ОБЯЗАТЕЛЬНО импортировать
+
+// const rootReducer = combineReducers({
+//   movies: moviesReducer,
+//   favorites: favoritesReducer,
+//   tickets: ticketsReducer,
+//   booking: bookingReducer, // <- добавить сюда
+// });
+
+// const store = configureStore({
+//   reducer: rootReducer,
+// });
+
+// export default store;
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import moviesReducer from "./moviesSlice";
 import favoritesReducer from "./favoritesSlice";
-import ticketsReducer from "./ticketsSlice";
-import bookingReducer from "./bookingSlice"; // <- важно подключить
+import bookingReducer from "./bookingSlice";
 
 const rootReducer = combineReducers({
   movies: moviesReducer,
   favorites: favoritesReducer,
-  tickets: ticketsReducer,
-  booking: bookingReducer, // <- добавляем
+  booking: bookingReducer,
 });
 
 const store = configureStore({
@@ -16,3 +32,4 @@ const store = configureStore({
 });
 
 export default store;
+
