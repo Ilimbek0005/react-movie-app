@@ -11,6 +11,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
+import ProductsPage from "./pages/ProductsPage";
+
 function App() {
   return (
     <AuthProvider>
@@ -43,6 +45,8 @@ function App() {
           />{" "}
           {/* Авторизация */} <Route path="/login" element={<Login />} />{" "}
           <Route path="/register" element={<Register />} />{" "}
+          <Route path="/products" element={<ProductsPage />} />
+
         </Routes>{" "}
         <Footer />{" "}
       </Router>{" "}

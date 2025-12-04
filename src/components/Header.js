@@ -13,6 +13,8 @@ function Header() {
         <Link to="/contacts" style={{ margin: "10px", color: "white" }}>Контакты</Link>
         <Link to="/movies" style={{ margin: "10px", color: "white" }}>Фильмы</Link>
         <Link to="/favorites" style={{ margin: "10px", color: "white" }}>Избранные</Link>
+        <Link to="/products" style={{ margin: "10px", color: "white" }}>Товары</Link>
+
 
         {/* Добавляем ссылки для зарегистрированного пользователя */}
         {user && (
